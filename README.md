@@ -1,0 +1,1 @@
+for sell count just do that initial value set 0 at the time of book creation then when user buy book then update that quantity in the book collections by book ID.
