@@ -1,0 +1,26 @@
+<%- include('../layout/header') %>
+    <div class="container my-3">
+        <div id="pgMsg"></div>
+        <% if(histories !='' ) { %>
+            <% histories.forEach(function(history,index) { %>
+                <div class="card">
+                    <div class="card-header">
+                        <%= history.userData[0].name %>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= history.bookData[0].title %>
+                        </h5>
+                        <p class="card-text">Quantity: <%= history.quantity %></p>
+                        <p class="card-text">Book Price: <%= history.price %></p>
+                        <p class="card-text">Description: <%= history.bookData[0].description %></p>
+                        <p class="card-text">Purchase Date: <%= history.purchaseDate %></p>
+                    </div>
+                </div>
+                <% }) %>
+
+                    <% } else { %>
+                        <h1 class="text-center text-secondary">No History found in database</h1>
+                        <% } %>
+    </div>
+    <%- include('../layout/footer') %>

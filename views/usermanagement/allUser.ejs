@@ -1,0 +1,34 @@
+<%- include('../layout/header') %>
+    <div class="container my-3">
+        <div class="row">
+            <% if(users != '') { %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(function(user,index) { %>
+                    <tr>
+                        <th scope="row"><%= index %></th>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <% if (user.role == 'author') { %>
+                            <td>Author</td>
+                            <%} else { %>
+                                <td>Retailer</td>
+                            <% } %>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h1 class="text-center text-secondary">No Users found in database</h1>
+                <% } %>
+        </div>
+    </div>
+    <%- include('../layout/footer') %>

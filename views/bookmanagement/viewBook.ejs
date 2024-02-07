@@ -1,0 +1,24 @@
+<%- include('../layout/header') %>
+    <div class="container my-3">
+        <div id="pgMsg"></div>
+            <% if(book != '') { %>
+                <div class="card">
+                    <div class="card-header">
+                      Featured
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= book.title %></h5>
+                      <p class="card-text"><%= book.description %></p>
+                      <form method="post" onsubmit="buyBook('<%= book._id %>','<%= book.price %>',event)">
+                        <div class="form-group mb-3">
+                            <label for="quantity">Quantity</label>
+                            <input type="text" class="form-control" id="quantity" name="quantity"
+                                placeholder="Enter quantity to buy" autocomplete="off" maxlength="4" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Buy Book</button>
+                      </form>
+                    </div>
+                  </div>
+            <% } %>
+    </div>
+    <%- include('../layout/footer') %>

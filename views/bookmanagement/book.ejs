@@ -1,0 +1,41 @@
+<%- include('../layout/header') %>
+    <div class="container my-3">
+        <a class="btn btn-primary" href="/addbook" role="button">Add</a>
+        <div id="pgMsg"></div>
+        <div class="row">
+            <% if(books != '') { %>
+                <p>
+                    
+                </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Authors</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% books.forEach(function(book,index) { %>
+                    <tr>
+                        <th scope="row"><%= index %></th>
+                        <td><%= book.title %></td>
+                        <td><%= book.users[0].name %></td>
+                        <td><%= book.price %></td>
+                        <td>
+                            <a href="/viewBook/<%= book._id %>" class="btn btn-primary">Buy Book</a>
+                            <a href="/editbook/<%= book._id %>" class="text-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href onclick="deleteBook('<%= book._id %>')" class="text-danger"><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h1 class="text-center text-secondary">No Books found in database</h1>
+                <% } %>
+        </div>
+    </div>
+    <%- include('../layout/footer') %>
